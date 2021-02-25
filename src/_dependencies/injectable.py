@@ -29,6 +29,8 @@ def _args(func, funcname, owner):
             raise DependencyError(
                 f"{funcname!r} have variable-length keyword arguments"
             )
+        if param.kind is param.POSITIONAL_ONLY:
+            raise DependencyError(f"{funcname!r} have positional-only arguments")
     return args
 
 
